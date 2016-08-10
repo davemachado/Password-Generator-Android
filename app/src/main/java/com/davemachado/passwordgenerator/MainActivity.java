@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         while(currentLength < passwordLength) {
-            randomNum = getRandomNumber(numberOfCategories, 1);
+            randomNum = getRandomNumber(3, 1);
 
             if(randomNum == 1 && numbersChecked) {
                 passwordArray[currentLength] = numberArray[getRandomNumber(8,1)];
