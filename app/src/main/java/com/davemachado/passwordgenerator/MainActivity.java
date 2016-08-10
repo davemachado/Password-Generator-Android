@@ -6,8 +6,11 @@ import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.CheckBox;
+import android.widget.Button;
 import android.util.Log;
 import android.widget.Toast;
+import android.content.ClipboardManager;
+import android.content.ClipData;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        new SimpleEula(this).show();
         textview = (TextView)findViewById(R.id.progress_text_view);
         seekbar = (SeekBar)findViewById(R.id.length_seekbar);
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -42,6 +46,17 @@ public class MainActivity extends AppCompatActivity {
                 Log.v("MainActivity", "Final Password Length: " + passwordLength);
             }
         });
+    }
+
+    public void copyPassword(View view) {
+        TextView passwordTextView = (TextView) findViewById(R.id.password_text_view);
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("gen", passwordTextView.getText());
+        clipboard.setPrimaryClip(clip);
+        TextView copiedTextView = (TextView) findViewById(R.id.copied_text_view);
+        Button copyButton = (Button) findViewById(R.id.copy_button);
+        copyButton.setVisibility(View.INVISIBLE);
+        copiedTextView.setVisibility(View.VISIBLE);
     }
 
     public int getRandomNumber(int maxNumber, int minNumber) {
@@ -96,5 +111,7 @@ public class MainActivity extends AppCompatActivity {
         String passwordString = new String(passwordArray);
         TextView passwordTextView = (TextView) findViewById(R.id.password_text_view);
         passwordTextView.setText(passwordString);
+        Button copyButton = (Button) findViewById(R.id.copy_button);
+        copyButton.setVisibility(View.VISIBLE);
     }
 }
