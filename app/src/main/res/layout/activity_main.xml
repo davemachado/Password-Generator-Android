@@ -21,6 +21,7 @@
     <LinearLayout
         android:id="@+id/checkboxes_linear_layout"
         android:layout_width="match_parent"
+        android:paddingTop="10dp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
@@ -30,6 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:paddingRight="24dp"
             android:checked="true"
             android:text="0-9" />
 
@@ -37,6 +39,7 @@
             android:id="@+id/uppercase_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingRight="24dp"
             android:checked="true"
             android:text="A-Z" />
 
@@ -45,6 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
+            android:paddingRight="24dp"
             android:text="a-z" />
     </LinearLayout>
 
